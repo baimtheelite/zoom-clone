@@ -1,6 +1,9 @@
 const express = require('express')
+const fs = require('fs')
 const app = express()
-const server = require('http').Server(app)
+// const server = require('https').Server(app)
+
+const server = require('https').createServer(app)
 const io = require('socket.io')(server)
 const { v4: uuidV4 } = require('uuid')
 
@@ -26,4 +29,4 @@ io.on('connection', socket => {
   })
 })
 
-server.listen(3000)
+server.listen(3000, '0.0.0.0');

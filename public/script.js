@@ -1,8 +1,9 @@
 const socket = io('/')
 const videoGrid = document.getElementById('video-grid')
 const myPeer = new Peer(undefined, {
-  host: '/',
-  port: '3001'
+  // secure: true,
+  // host: '/',
+  // port: '443'
 })
 const myVideo = document.createElement('video')
 myVideo.muted = true
@@ -35,6 +36,7 @@ myPeer.on('open', id => {
 })
 
 function connectToNewUser(userId, stream) {
+  console.log(userId);
   const call = myPeer.call(userId, stream)
   const video = document.createElement('video')
   call.on('stream', userVideoStream => {
