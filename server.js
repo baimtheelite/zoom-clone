@@ -3,7 +3,7 @@ const fs = require('fs')
 const app = express()
 // const server = require('https').Server(app)
 
-const server = require('https').createServer(app)
+// const server = require('http').Server(app)
 const io = require('socket.io')(server)
 const { v4: uuidV4 } = require('uuid')
 
@@ -29,4 +29,4 @@ io.on('connection', socket => {
   })
 })
 
-server.listen(3000, '0.0.0.0');
+app.listen(3000, '0.0.0.0');
